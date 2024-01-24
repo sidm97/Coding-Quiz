@@ -6,6 +6,7 @@ var timerEl = document.querySelector("#time")
 var startScreen = document.querySelector("#start-screen")
 // 	create variable secsleft that starts at 60
 var timeleft = 0
+var questionScreen = document.querySelector("#questions")
 
 // create function that changes text of "time", count --, every 1000
 function startTimer() {
@@ -19,7 +20,9 @@ function startTimer() {
         //   function that ends quiz and brings up highscore section to input name
         }
 },1000)
-startScreen.textContent = ""
+
+startScreen.setAttribute("class", "hide")
+questionScreen.setAttribute("class","show")
 
 }
 function startQuiz () {

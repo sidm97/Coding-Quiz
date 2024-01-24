@@ -1,5 +1,4 @@
 // when start button pressed, timer should start
-// id = start (create event listener)
 
 // create multiple convenience variables
 var startButton = document.querySelector("#startbtn")
@@ -8,6 +7,7 @@ var timerEl = document.querySelector("#time")
 // 	create variable secsleft that starts at 60
 var timeleft = 0
 
+// create function that changes text of "time", count --, every 1000
 function startTimer() {
     var timeLeft = 60
     var ticking = setInterval(function() {
@@ -21,9 +21,7 @@ function startTimer() {
 },1000)
 }
 
-
-// 	create selector for id = time and set default as 0 when not started
-
-// create function that changes text of "time", count --, every 1000
-
+// id = start (create event listener)
 startButton.addEventListener("click",startTimer)
+
+

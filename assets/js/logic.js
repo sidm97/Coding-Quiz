@@ -20,16 +20,25 @@ function startTimer() {
         //   function that ends quiz and brings up highscore section to input name
         }
 },1000)
+}
 
+function transitionToquestionScreen(){
 startScreen.setAttribute("class", "hide")
 questionScreen.setAttribute("class","show")
-
 }
+
+
+
+
+
+
 function startQuiz () {
-    
+startTimer()
+transitionToquestionScreen()
+
 }
 
 // id = start (create event listener)
-startButton.addEventListener("click",startTimer)
+startButton.addEventListener("click",startQuiz)
 
 

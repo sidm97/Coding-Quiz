@@ -3,7 +3,7 @@
 // create multiple convenience variables
 var startButton = document.querySelector("#startbtn")
 var timerEl = document.querySelector("#time")
-
+var startScreen = document.querySelector("#start-screen")
 // 	create variable secsleft that starts at 60
 var timeleft = 0
 
@@ -19,6 +19,11 @@ function startTimer() {
         //   function that ends quiz and brings up highscore section to input name
         }
 },1000)
+startScreen.textContent = ""
+
+}
+function startQuiz () {
+    
 }
 
 // id = start (create event listener)

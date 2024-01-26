@@ -71,9 +71,7 @@ function nextQuestion(event) {
     li.textContent = choice
     choiceEl.appendChild(li);
 }
-console.log(questionNum);
 }
-
 
 function lastQuestion(event) {
   qTitle.textContent = ""

@@ -30,6 +30,7 @@ questionScreen.setAttribute("class","show")
 function startQuiz () {
 startTimer()
 transitionToquestionScreen()
+console.log(questionNum);
 };
 
 // id = start (create event listener)
@@ -70,17 +71,21 @@ function nextQuestion(event) {
     li.textContent = choice
     choiceEl.appendChild(li);
 }
-if (questionNum === 4) {
-    
-}
+console.log(questionNum);
 }
 
 
+function lastQuestion(event) {
+  qTitle.textContent = ""
+  choiceEl.innerHTML = ""
+}
 
 choiceEl.addEventListener("click", function(event) {
   var element = event.target;
-  if (element.matches("button")===true){
+  if (element.matches("button")===true && questionNum < 4){
     nextQuestion()
+  } else {
+    lastQuestion()
   }
 });
 

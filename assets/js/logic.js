@@ -18,32 +18,33 @@ var array = [questionOne,questionTwo,questionThree,questionFour,questionFive]
 selectedQuestion = array[questionNum];
 
 // Timer variable
-var timeleft = 0
+let timeLeft = 0
 
+var isIncorrect = false
 // Start screen functions; one for the timer and one to manage the transition into questions (which also populates the first question)
 function startTimer() {
-    var timeLeft = 60
-    var ticking = setInterval(function() {
-        timeLeft--;
-        timerEl.textContent = timeLeft;
-        // Spaceholder for if function that checks if answer is correct; if not, deduct 10 seconds from timeLeft
-        if(timeLeft === 0 || timeLeft < 0) {
-        clearInterval(ticking);
-        //   function that ends quiz and brings up highscore section to input name
-        }
-},1000)
+  timeLeft = 60
+  var ticking = setInterval(function() {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    // Spaceholder for if function that checks if answer is correct; if not, deduct 10 seconds from timeLeft
+    if(timeLeft === 0 || timeLeft < 0) {
+      clearInterval(ticking);
+      //   function that ends quiz and brings up highscore section to input name
+    }
+  },1000)
 };
 
 function transitionToquestionScreen(){
-startScreen.setAttribute("class", "hide")
-questionScreen.setAttribute("class","show")
-qTitle.textContent = selectedQuestion.title
-for (let i = 0; i < selectedQuestion.choices.length; i++) {
-  var choice = selectedQuestion.choices[i];
-  var button = document.createElement("button")
-  button.textContent = choice
-  choiceEl.appendChild(button);
-}
+  startScreen.setAttribute("class", "hide")
+  questionScreen.setAttribute("class","show")
+  qTitle.textContent = selectedQuestion.title
+  for (let i = 0; i < selectedQuestion.choices.length; i++) {
+    var choice = selectedQuestion.choices[i];
+    var button = document.createElement("button")
+    button.textContent = choice
+    choiceEl.appendChild(button);
+  }
 };
 
 
@@ -51,10 +52,10 @@ for (let i = 0; i < selectedQuestion.choices.length; i++) {
 function nextQuestion(event) {
   questionNum++
   selectedQuestion = array[questionNum];
-qTitle.textContent = ""
-qTitle.textContent = selectedQuestion.title;
+  qTitle.textContent = ""
+  qTitle.textContent = selectedQuestion.title;
   choiceEl.textContent = ""
-for (let i = 0; i < selectedQuestion.choices.length; i++) {
+  for (let i = 0; i < selectedQuestion.choices.length; i++) {
   var choice = selectedQuestion.choices[i];
   var li = document.createElement("button")
   li.textContent = choice
@@ -78,21 +79,37 @@ transitionToquestionScreen()
 // Event listeners
 startButton.addEventListener("click",startQuiz);
 
-choiceEl.addEventListener("click", function(event) {
-  var element = event.target;
-  if (element.matches("button")===true && questionNum < 4){
-    nextQuestion()
-  } else if (element.matches("button") === true && questionNum === 4) {
-    lastQuestion()
-  }
-});
 
 
 choiceEl.addEventListener("click",function(event) {
   var elementTwo = event.target;
-  console.log(elementTwo.textContent);
-  console.log(selectedQuestion.correct);
-})
+  if(elementTwo.matches("button")===true){
+    if (elementTwo.textContent === "Alerts") {
+      console.log("correct");
+    } else     if (elementTwo.textContent === "<js>") {
+      console.log("correct");
+    } else 
+    if (elementTwo.textContent === "The <body> section") {
+      console.log("correct");
+    } else 
+    if (elementTwo.textContent === "alert('Hello World!)") {
+      console.log("correct");
+    } else 
+    if (elementTwo.textContent === "for(i = 0; i <= 5; i++)") {
+      console.log("correct");
+    } else {
+      console.log("incorrect");
+      timeLeft -= 10;
+    }
+  }
+});
 
 
-// in a separate function, fetch question number. for q1, if event.target is not textcontent = "answer", deduct 10 secs from counter
+choiceEl.addEventListener("click", function(event) {
+  var element = event.target;
+  if (element.matches("button")===true && questionNum < 4){
+    setTimeout(nextQuestion,1000);
+  } else if (element.matches("button") === true && questionNum === 4) {
+    setTimeout(lastQuestion,1000);
+  }
+});

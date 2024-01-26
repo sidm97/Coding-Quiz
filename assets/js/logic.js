@@ -67,12 +67,13 @@ qTitle.textContent = ""
 choiceEl.innerHTML = ""
 }
 
+
 // Final function for quiz as a whole
 function startQuiz () {
 startTimer()
 transitionToquestionScreen()
-console.log(questionNum);
 };
+
 
 // Event listeners
 startButton.addEventListener("click",startQuiz);
@@ -85,6 +86,13 @@ choiceEl.addEventListener("click", function(event) {
     lastQuestion()
   }
 });
+
+
+choiceEl.addEventListener("click",function(event) {
+  var elementTwo = event.target;
+  console.log(elementTwo.textContent);
+  console.log(selectedQuestion.correct);
+})
 
 
 // in a separate function, fetch question number. for q1, if event.target is not textcontent = "answer", deduct 10 secs from counter

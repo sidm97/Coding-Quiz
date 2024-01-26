@@ -10,32 +10,16 @@
 // alerts !
 // numbers
 
-var qContainer = document.querySelector("#questions")
-console.log(qContainer);
-var qTitle = document.querySelector("#question-title")
-console.log(qTitle);
-
-qTitle.textContent = "commonly used data types do not include"
-
-// var qChoices = document.querySelector("#choices")
-// console.log(qChoices);
-
-var populateChoices = document.createElement("li")
+var questionOne = {
+  title: "commonly used data types do not include: ",
+  choices: ["strings", "booleans","alerts", "numbers"],
+  correct: "alerts"
+}
+var questionTwo = {
+  title: "1commonly used data types do not include: ",
+  choices: ["1strings", "1booleans","1alerts", "1numbers"]
+}
 
 
-var qChoices = ["strings", "booleans", "alerts", "numbers"]
-
-var choiceEl = document.querySelector("#choices")
-
-function render() {
-
-    for (var i = 0; i < qChoices.length; i++) {
-      var choice = qChoices[i];
-      var li = document.createElement("li");
-      li.textContent = qChoices;
-      choiceEl.appendChild(li);
-    }
-  }
-
-  console.log(qChoices);
-startButton.addEventListener("click",render)
+// do questions while timer >0
+// inside questions, add event listener to listen for clicks on buttons. if button clicked, change text content of question to next. if button clicked is correct, 

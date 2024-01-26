@@ -35,10 +35,60 @@ questionScreen.setAttribute("class","show")
 function startQuiz () {
 startTimer()
 transitionToquestionScreen()
-
 }
 
 // id = start (create event listener)
 startButton.addEventListener("click",startQuiz)
 
+
+
+
+
+
+
+
+
+
+
+
+
+var qContainer = document.querySelector("#questions")
+var qTitle = document.querySelector("#question-title")
+var choiceEl = document.querySelector("#choices")
+var questionNum = 0
+var startButton = document.querySelector("#startbtn")
+var choiceButtonel = document.querySelector("choicebutton")
+
+
+
+var array = [questionOne,questionTwo]
+selectedQuestion = array[questionNum];
+
+// First question
+qTitle.textContent = selectedQuestion.title
+for (let i = 0; i < selectedQuestion.choices.length; i++) {
+  var choice = selectedQuestion.choices[i];
+  var button = document.createElement("button")
+  button.textContent = choice
+  choiceEl.appendChild(button);
+}
+var buttonEl = document.querySelector("button")
+
+
+function nextQuestion(event) {
+  questionNum++
+  choiceEl.textContent = ""
+  qTitle.textContent = selectedQuestion.title
+  for (let i = 0; i < selectedQuestion.choices.length; i++) {
+    var choice = selectedQuestion.choices[i];
+    var li = document.createElement("button")
+    li.textContent = choice
+    choiceEl.appendChild(li);
+}
+console.log(questionNum);
+}
+
+
+
+document.addEventListener("click", nextQuestion);
 

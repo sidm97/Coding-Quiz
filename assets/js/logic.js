@@ -81,7 +81,7 @@ choiceEl.addEventListener("click", function(event) {
   var element = event.target;
   if (element.matches("button")===true && questionNum < 4){
     nextQuestion()
-  } else {
+  } else if (element.matches("button") === true && questionNum === 4) {
     lastQuestion()
   }
 });

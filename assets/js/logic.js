@@ -43,6 +43,8 @@ var qContainer = document.querySelector("#questions");
 var qTitle = document.querySelector("#question-title");
 var choiceEl = document.querySelector("#choices");
 var questionNum = 0;
+var buttonEl = document.querySelector("button")
+
 
 var array = [questionOne,questionTwo,questionThree,questionFour,questionFive]
 selectedQuestion = array[questionNum];
@@ -54,7 +56,6 @@ for (let i = 0; i < selectedQuestion.choices.length; i++) {
   button.textContent = choice
   choiceEl.appendChild(button);
 }
-var buttonEl = document.querySelector("button")
 
 
 function nextQuestion(event) {
@@ -76,5 +77,12 @@ if (questionNum === 4) {
 
 
 
-choiceEl.addEventListener("click", nextQuestion);
+choiceEl.addEventListener("click", function(event) {
+  var element = event.target;
+  if (element.matches("button")===true){
+    nextQuestion()
+  }
+});
 
+
+// in a separate function, fetch question number. for q1, if event.target is not textcontent = "answer", deduct 10 secs from counter

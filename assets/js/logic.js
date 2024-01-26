@@ -10,6 +10,9 @@ var qTitle = document.querySelector("#question-title");
 var choiceEl = document.querySelector("#choices");
 var buttonEl = document.querySelector("button")
 
+// End screen variables
+var endScreen = document.querySelector("#end-screen")
+
 // Variable to measure question number to allow transition to next question and to end quiz after 5 questions
 var questionNum = 0;
 
@@ -66,6 +69,8 @@ function nextQuestion(event) {
 function lastQuestion(event) {
 qTitle.textContent = ""
 choiceEl.innerHTML = ""
+questionScreen.setAttribute("class","hide")
+endScreen.setAttribute("class", "show")
 }
 
 

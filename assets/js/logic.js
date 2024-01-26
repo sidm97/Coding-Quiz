@@ -4,35 +4,35 @@ var timerEl = document.querySelector("#time")
 var startScreen = document.querySelector("#start-screen")
 var questionScreen = document.querySelector("#questions")
 
+
 // Question screen convenience variables
 var qContainer = document.querySelector("#questions");
 var qTitle = document.querySelector("#question-title");
 var choiceEl = document.querySelector("#choices");
-var buttonEl = document.querySelector("button")
-
-// End screen variables
-var endScreen = document.querySelector("#end-screen")
-
+var buttonEl = document.querySelector("button");
 // Variable to measure question number to allow transition to next question and to end quiz after 5 questions
 var questionNum = 0;
-
 // Variable that fetches questions from separate js
-var array = [questionOne,questionTwo,questionThree,questionFour,questionFive]
+var array = [questionOne,questionTwo,questionThree,questionFour,questionFive];
 selectedQuestion = array[questionNum];
-
 // Timer variable
-let timeLeft = 0
+let timeLeft = 0;
+let ticking = null;
 
-var isIncorrect = false
+// End screen variables
+var endScreen = document.querySelector("#end-screen");
+
+
 // Start screen functions; one for the timer and one to manage the transition into questions (which also populates the first question)
+
 function startTimer() {
   timeLeft = 60
-  var ticking = setInterval(function() {
+  let ticking = setInterval(function() {
     timeLeft--;
     timerEl.textContent = timeLeft;
-    // Spaceholder for if function that checks if answer is correct; if not, deduct 10 seconds from timeLeft
     if(timeLeft === 0 || timeLeft < 0) {
       clearInterval(ticking);
+      timerEl.textContent = 0
       //   function that ends quiz and brings up highscore section to input name
     }
   },1000)
@@ -67,10 +67,14 @@ function nextQuestion(event) {
 }
 
 function lastQuestion(event) {
-qTitle.textContent = ""
-choiceEl.innerHTML = ""
-questionScreen.setAttribute("class","hide")
-endScreen.setAttribute("class", "show")
+console.log(timeLeft);
+qTitle.textContent = "";
+choiceEl.innerHTML = "";
+questionScreen.setAttribute("class","hide");
+endScreen.setAttribute("class", "show");
+timeLeft = 0
+clearInterval(ticking);
+timerEl.textContent = 0
 }
 
 
@@ -113,8 +117,8 @@ choiceEl.addEventListener("click",function(event) {
 choiceEl.addEventListener("click", function(event) {
   var element = event.target;
   if (element.matches("button")===true && questionNum < 4){
-    setTimeout(nextQuestion,1000);
+    setTimeout(nextQuestion,500);
   } else if (element.matches("button") === true && questionNum === 4) {
-    setTimeout(lastQuestion,1000);
+    setTimeout(lastQuestion,500);
   }
 });

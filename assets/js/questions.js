@@ -11,13 +11,26 @@
 // numbers
 
 var questionOne = {
-  title: "commonly used data types do not include: ",
+  title: "1. commonly used data types do not include: ",
   choices: ["strings", "booleans","alerts", "numbers"],
   correct: "alerts"
 }
 var questionTwo = {
-  title: "1commonly used data types do not include: ",
-  choices: ["1strings", "1booleans","1alerts", "1numbers"]
+  title: "2. commonly used data types do not include: ",
+  choices: ["2strings", "1booleans","1alerts", "1numbers"]
+}
+
+var questionThree = {
+  title: "3. commonly used data types do not include: ",
+  choices: ["3strings", "1booleans","1alerts", "1numbers"]
+}
+var questionFour = {
+  title: "4. commonly used data types do not include: ",
+  choices: ["4strings", "1booleans","1alerts", "1numbers"]
+}
+var questionFive = {
+  title: "5. commonly used data types do not include: ",
+  choices: ["5strings", "1booleans","1alerts", "1numbers"]
 }
 
 

@@ -20,51 +20,33 @@ function startTimer() {
         //   function that ends quiz and brings up highscore section to input name
         }
 },1000)
-}
+};
 
 function transitionToquestionScreen(){
 startScreen.setAttribute("class", "hide")
 questionScreen.setAttribute("class","show")
-}
-
-
-
-
-
+};
 
 function startQuiz () {
 startTimer()
 transitionToquestionScreen()
-}
+};
 
 // id = start (create event listener)
-startButton.addEventListener("click",startQuiz)
+startButton.addEventListener("click",startQuiz);
 
 
 
 
 
+var qContainer = document.querySelector("#questions");
+var qTitle = document.querySelector("#question-title");
+var choiceEl = document.querySelector("#choices");
+var questionNum = 0;
 
-
-
-
-
-
-
-
-var qContainer = document.querySelector("#questions")
-var qTitle = document.querySelector("#question-title")
-var choiceEl = document.querySelector("#choices")
-var questionNum = 0
-var startButton = document.querySelector("#startbtn")
-var choiceButtonel = document.querySelector("choicebutton")
-
-
-
-var array = [questionOne,questionTwo]
+var array = [questionOne,questionTwo,questionThree,questionFour,questionFive]
 selectedQuestion = array[questionNum];
 
-// First question
 qTitle.textContent = selectedQuestion.title
 for (let i = 0; i < selectedQuestion.choices.length; i++) {
   var choice = selectedQuestion.choices[i];
@@ -76,19 +58,23 @@ var buttonEl = document.querySelector("button")
 
 
 function nextQuestion(event) {
-  questionNum++
-  choiceEl.textContent = ""
-  qTitle.textContent = selectedQuestion.title
+    questionNum++
+    selectedQuestion = array[questionNum];
+  qTitle.textContent = ""
+  qTitle.textContent = selectedQuestion.title;
+    choiceEl.textContent = ""
   for (let i = 0; i < selectedQuestion.choices.length; i++) {
     var choice = selectedQuestion.choices[i];
     var li = document.createElement("button")
     li.textContent = choice
     choiceEl.appendChild(li);
 }
-console.log(questionNum);
+if (questionNum === 4) {
+    
+}
 }
 
 
 
-document.addEventListener("click", nextQuestion);
+choiceEl.addEventListener("click", nextQuestion);
 

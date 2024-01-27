@@ -19,7 +19,6 @@ selectedQuestion = array[questionNum];
 let timeLeft = 0;
 let ticking = null;
 var feedbackEl = document.querySelector("#feedback")
-
 // End screen variables
 var endScreen = document.querySelector("#end-screen");
 var finalScoreel = document.querySelector("#final-score");
@@ -146,16 +145,10 @@ choiceEl.addEventListener("click", function(event) {
 
 let regex = /^[a-zA-Z]+$/;
 
-function hasNumber(myString) {
-  return /\d/.test(myString)
-}
-
 submitButton.addEventListener("click", function(event){
 event.preventDefault();
 resetFeedback();
 var initialsInput = initialsEl.value;
-hasNumber(initialsInput);
-console.log(hasNumber);
 if (initialsInput === "") {
   feedbackEl.textContent = "Please input your initials so your highscore can be saved"
 } else if (!regex.test(initialsInput)){
@@ -163,6 +156,10 @@ if (initialsInput === "") {
 } else if (initialsInput.length > 3) {
   feedbackEl.textContent = "Please enter a maximum of 3 letters"
 } else {
+  localStorage.setItem("score", finalScoreel.textContent);
+  var initials = initialsInput.toUpperCase();
+  console.log(initials);
+  localStorage.setItem("initials", initials)
   feedbackEl.textContent = "Your score has been saved. Reload the page to play again"
   initialsEl.disabled = true;
   submitButton.disabled = true;

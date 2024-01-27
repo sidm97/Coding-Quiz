@@ -45,7 +45,7 @@ function startTimer() {
 function transitionToquestionScreen(){
   startScreen.setAttribute("class", "hide")
   questionScreen.setAttribute("class","show")
-  feedbackEl.setAttribute = ("class", "show")
+  feedbackEl.classList.replace("hide", "show");
   qTitle.textContent = selectedQuestion.title
   for (let i = 0; i < selectedQuestion.choices.length; i++) {
     var choice = selectedQuestion.choices[i];
@@ -96,6 +96,9 @@ startTimer()
 transitionToquestionScreen()
 };
 
+function resetFeedback() {
+feedbackEl.textContent = "";
+}
 
 // Event listeners
 startButton.addEventListener("click",startQuiz);
@@ -107,20 +110,26 @@ choiceEl.addEventListener("click",function(event) {
   if(elementTwo.matches("button")===true){
     if (elementTwo.textContent === "Alerts") {
       feedbackEl.textContent = "Correct"
+      setTimeout(resetFeedback,500);
     } else     if (elementTwo.textContent === "<js>") {
       feedbackEl.textContent = "Correct"
+      setTimeout(resetFeedback,500);
     } else 
     if (elementTwo.textContent === "The <body> section") {
       feedbackEl.textContent = "Correct"
+      setTimeout(resetFeedback,500);
     } else 
     if (elementTwo.textContent === "alert('Hello World!)") {
       feedbackEl.textContent = "Correct"
+      setTimeout(resetFeedback,500);
     } else 
     if (elementTwo.textContent === "for(i = 0; i <= 5; i++)") {
       feedbackEl.textContent = "Correct"
+      setTimeout(resetFeedback,500);
     } else {
       feedbackEl.textContent = "Incorrect"
       timeLeft -= 10;
+      setTimeout(resetFeedback,500);
     }
   }
 });

@@ -33,8 +33,6 @@ for (let i = 0; i < sortable.length; i++) {
 
 // Explanation of above; first, the local storage is sourced and stored in an object. An array is created and filled with the entries of the object; in this case, each entry is a key and value, a user and score. the new array or arrays is sorted in descending value order and a for loop renders it onto the page.
 
-console.log(Object.keys(highscoreEntries));
-
 
 
 // var obj = {

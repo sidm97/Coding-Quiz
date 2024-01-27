@@ -144,19 +144,37 @@ choiceEl.addEventListener("click", function(event) {
 });
 
 let regex = /^[a-zA-Z]+$/;
+var highscoreEntries = {...localStorage};
+
+var users = Object.keys(highscoreEntries)
 
 submitButton.addEventListener("click", function(event){
 event.preventDefault();
 resetFeedback();
 var initialsInput = initialsEl.value.trim();
+var initials = initialsInput.toUpperCase();
 if (initialsInput === "") {
   feedbackEl.textContent = "Please input your initials so your highscore can be saved"
 } else if (!regex.test(initialsInput)){
   feedbackEl.textContent = "Please enter only letters for your initials"
 } else if (initialsInput.length > 3) {
   feedbackEl.textContent = "Please enter a maximum of 3 letters"
+} else if (users.includes(initials)) {
+  var previousScore = parseInt(localStorage.getItem(initials))
+  if (previousScore > parseInt(finalScoreel.textContent)) {
+    confirm("You have a previous score that is higher on the leaderboard; do you want to save this score instead?")
+      if (confirm===true) {
+        initialsEl.disabled = true;
+        submitButton.disabled = true;
+        feedbackEl.textContent = "Your score has been updated on the leaderboard. Reload the page to play again"
+        localStorage.setItem(initials, finalScoreel.textContent);
+      } else {feedbackEl.textContent = "Please input your initials to save your score, or reload the page to play again"}
+  } else if (previousScore < parseInt(finalScoreel.textContent)){
+  localStorage.setItem(initials, finalScoreel.textContent);
+  feedbackEl.textContent = "Your score has been saved. Reload the page to play again"
+  initialsEl.disabled = true;
+  submitButton.disabled = true;}
 } else {
-  var initials = initialsInput.toUpperCase();
   localStorage.setItem(initials, finalScoreel.textContent);
   feedbackEl.textContent = "Your score has been saved. Reload the page to play again"
   initialsEl.disabled = true;

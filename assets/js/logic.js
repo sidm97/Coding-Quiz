@@ -18,6 +18,7 @@ selectedQuestion = array[questionNum];
 // Timer variable
 let timeLeft = 0;
 let ticking = null;
+var feedbackEl = document.querySelector("#feedback")
 
 // End screen variables
 var endScreen = document.querySelector("#end-screen");
@@ -42,6 +43,7 @@ function startTimer() {
 function transitionToquestionScreen(){
   startScreen.setAttribute("class", "hide")
   questionScreen.setAttribute("class","show")
+  feedbackEl.setAttribute = ("class", "show")
   qTitle.textContent = selectedQuestion.title
   for (let i = 0; i < selectedQuestion.choices.length; i++) {
     var choice = selectedQuestion.choices[i];
@@ -96,20 +98,20 @@ choiceEl.addEventListener("click",function(event) {
   var elementTwo = event.target;
   if(elementTwo.matches("button")===true){
     if (elementTwo.textContent === "Alerts") {
-      console.log("correct");
+      feedbackEl.textContent = "Correct"
     } else     if (elementTwo.textContent === "<js>") {
-      console.log("correct");
+      feedbackEl.textContent = "Correct"
     } else 
     if (elementTwo.textContent === "The <body> section") {
-      console.log("correct");
+      feedbackEl.textContent = "Correct"
     } else 
     if (elementTwo.textContent === "alert('Hello World!)") {
-      console.log("correct");
+      feedbackEl.textContent = "Correct"
     } else 
     if (elementTwo.textContent === "for(i = 0; i <= 5; i++)") {
-      console.log("correct");
+      feedbackEl.textContent = "Correct"
     } else {
-      console.log("incorrect");
+      feedbackEl.textContent = "Incorrect"
       timeLeft -= 10;
     }
   }

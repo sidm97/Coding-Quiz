@@ -63,3 +63,14 @@ for (let i = 0; i < sortable.length; i++) {
 //     oJson[sKey] = window.localStorage.getItem(sKey);
 // }
 // console.log(oJson);
+
+
+var clearBtn = document.querySelector("#clear")
+
+
+function clearHighscores(){
+    localStorage.clear();
+    highscoreEl.innerHTML = "";
+}
+
+clearBtn.addEventListener("click",clearHighscores);

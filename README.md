@@ -9,9 +9,13 @@ This site, unlike my previous works, has quite a few moving pieces, but is quite
 
 
 ![Start screen](Loadingscreen.png)
+
+
 After completing the quiz, the user can type a maximum of 3 letters for their initials to load the score into the leaderboard. Reloading the page resets the game but keeps the highscores.
 
+
 ![End screen](Endscreen.png)
+
 
 Link to site: https://sidm97.github.io/Coding-Quiz/
 

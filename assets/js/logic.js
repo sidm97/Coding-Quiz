@@ -148,7 +148,7 @@ let regex = /^[a-zA-Z]+$/;
 submitButton.addEventListener("click", function(event){
 event.preventDefault();
 resetFeedback();
-var initialsInput = initialsEl.value;
+var initialsInput = initialsEl.value.trim();
 if (initialsInput === "") {
   feedbackEl.textContent = "Please input your initials so your highscore can be saved"
 } else if (!regex.test(initialsInput)){
@@ -156,10 +156,8 @@ if (initialsInput === "") {
 } else if (initialsInput.length > 3) {
   feedbackEl.textContent = "Please enter a maximum of 3 letters"
 } else {
-  localStorage.setItem("score", finalScoreel.textContent);
   var initials = initialsInput.toUpperCase();
-  console.log(initials);
-  localStorage.setItem("initials", initials)
+  localStorage.setItem(initials, finalScoreel.textContent);
   feedbackEl.textContent = "Your score has been saved. Reload the page to play again"
   initialsEl.disabled = true;
   submitButton.disabled = true;

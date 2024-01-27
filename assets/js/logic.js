@@ -124,3 +124,15 @@ choiceEl.addEventListener("click", function(event) {
     setTimeout(lastQuestion,500);
   }
 });
+
+
+submitButton.addEventListener("click", function(event){
+event.preventDefault();
+var initialsInput = initialsEl.value;
+if (initialsInput === "") {
+  // feedback = please input your initials so your highscore can be saved
+}
+else {
+  // clear input field, feedback = your highscore has been saved, local storage
+}
+})

@@ -35,7 +35,9 @@ function startTimer() {
     if(timeLeft === 0 || timeLeft < 0) {
       clearInterval(ticking);
       timerEl.textContent = 0
-      //   function that ends quiz and brings up highscore section to input name
+      if (qTitle.textContent !== "") {
+        timeOut();
+      }
     }
   },1000)
 };
@@ -71,16 +73,22 @@ function nextQuestion(event) {
 
 function lastQuestion(event) {
 let score = timeLeft
+finalScoreel.textContent = score;
 qTitle.textContent = "";
 choiceEl.innerHTML = "";
 questionScreen.setAttribute("class","hide");
 endScreen.setAttribute("class", "show");
 timeLeft = 0
-clearInterval(ticking);
 timerEl.textContent = 0
-finalScoreel.textContent = score;
 }
 
+function timeOut() {
+  qTitle.textContent = "";
+choiceEl.innerHTML = "";
+questionScreen.setAttribute("class","hide");
+endScreen.setAttribute("class", "show");
+finalScoreel.textContent = 0
+}
 
 // Final function for quiz as a whole
 function startQuiz () {

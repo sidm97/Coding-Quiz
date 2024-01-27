@@ -144,14 +144,29 @@ choiceEl.addEventListener("click", function(event) {
   }
 });
 
+let regex = /^[a-zA-Z]+$/;
+
+function hasNumber(myString) {
+  return /\d/.test(myString)
+}
 
 submitButton.addEventListener("click", function(event){
 event.preventDefault();
+resetFeedback();
 var initialsInput = initialsEl.value;
+hasNumber(initialsInput);
+console.log(hasNumber);
 if (initialsInput === "") {
-  // feedback = please input your initials so your highscore can be saved
+  feedbackEl.textContent = "Please input your initials so your highscore can be saved"
+} else if (!regex.test(initialsInput)){
+  feedbackEl.textContent = "Please enter only letters for your initials"
+} else if (initialsInput.length > 3) {
+  feedbackEl.textContent = "Please enter a maximum of 3 letters"
+} else {
+  feedbackEl.textContent = "Your score has been saved. Reload the page to play again"
+  initialsEl.disabled = true;
+  submitButton.disabled = true;
 }
-else {
-  // clear input field, feedback = your highscore has been saved, local storage
+document.getElementById("initials").value = ""
 }
-})
+)

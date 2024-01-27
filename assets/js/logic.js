@@ -162,12 +162,11 @@ if (initialsInput === "") {
 } else if (users.includes(initials)) {
   var previousScore = parseInt(localStorage.getItem(initials))
   if (previousScore > parseInt(finalScoreel.textContent)) {
-    confirm("You have a previous score that is higher on the leaderboard; do you want to save this score instead?")
-      if (confirm===true) {
+    if(confirm("You have a previous score that is higher on the leaderboard; do you want to save this score instead?")) {
+        localStorage.setItem(initials, finalScoreel.textContent);
         initialsEl.disabled = true;
         submitButton.disabled = true;
         feedbackEl.textContent = "Your score has been updated on the leaderboard. Reload the page to play again"
-        localStorage.setItem(initials, finalScoreel.textContent);
       } else {feedbackEl.textContent = "Please input your initials to save your score, or reload the page to play again"}
   } else if (previousScore < parseInt(finalScoreel.textContent)){
   localStorage.setItem(initials, finalScoreel.textContent);

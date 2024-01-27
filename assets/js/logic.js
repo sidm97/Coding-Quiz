@@ -21,8 +21,9 @@ let ticking = null;
 
 // End screen variables
 var endScreen = document.querySelector("#end-screen");
-
-
+var finalScoreel = document.querySelector("#final-score");
+var initialsEl = document.querySelector("#initials");
+var submitButton = document.querySelector("#submit");
 // Start screen functions; one for the timer and one to manage the transition into questions (which also populates the first question)
 
 function startTimer() {
@@ -67,7 +68,7 @@ function nextQuestion(event) {
 }
 
 function lastQuestion(event) {
-console.log(timeLeft);
+let score = timeLeft
 qTitle.textContent = "";
 choiceEl.innerHTML = "";
 questionScreen.setAttribute("class","hide");
@@ -75,6 +76,7 @@ endScreen.setAttribute("class", "show");
 timeLeft = 0
 clearInterval(ticking);
 timerEl.textContent = 0
+finalScoreel.textContent = score;
 }
 
 
